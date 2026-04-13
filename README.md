@@ -74,5 +74,5 @@ LunaSync busca brindar herramientas para el autoconocimiento y mejorar la calida
 
 ---
 
-## 📅 Estado del proyecto
-En desarrollo 🚧
+## Estado del proyecto
+En desarrollo 
