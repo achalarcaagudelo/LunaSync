@@ -1,20 +1,20 @@
 # 🌸 LunaSync
 
-## 📌 Descripción
+## Descripción
 LunaSync es una plataforma inteligente de bienestar femenino que ayuda a las mujeres a comprender su cuerpo, emociones, productividad y salud a través del seguimiento del ciclo menstrual.
 
 A diferencia de otras aplicaciones, LunaSync integra inteligencia artificial para ofrecer recomendaciones personalizadas en tiempo real, adaptadas al estado emocional, físico y hábitos de la usuaria.
 
 ---
 
-## 🎯 Problema que soluciona
+## Problema que soluciona
 Muchas mujeres no comprenden cómo su ciclo menstrual afecta su energía, emociones y rendimiento diario. Esto puede generar estrés, desorganización y falta de autocuidado.
 
 LunaSync busca brindar herramientas para el autoconocimiento y mejorar la calidad de vida.
 
 ---
 
-## 🚀 Innovación
+## Innovación
 - Integración de salud física, mental y productividad  
 - Uso de inteligencia artificial para recomendaciones personalizadas  
 - Análisis emocional mediante texto  
@@ -22,7 +22,7 @@ LunaSync busca brindar herramientas para el autoconocimiento y mejorar la calida
 
 ---
 
-## 🧠 Funcionalidades principales
+## Funcionalidades principales
 - 🌙 Seguimiento del ciclo menstrual  
 - 🤖 Asistente inteligente con IA  
 - 💬 Diario emocional con análisis automático  
@@ -41,7 +41,7 @@ LunaSync busca brindar herramientas para el autoconocimiento y mejorar la calida
 
 ---
 
-## 🧩 Módulos del sistema
+## Módulos del sistema
 1. Registro de usuario  
 2. Seguimiento del ciclo  
 3. Sistema de IA  
@@ -52,21 +52,21 @@ LunaSync busca brindar herramientas para el autoconocimiento y mejorar la calida
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 - Ashley  
 - Dhana 
 - Sofía  
 
 ---
 
-## 👩‍💻 Público objetivo
+## Público objetivo
 - Adolescentes  
 - Mujeres jóvenes  
 - Estudiantes  
 
 ---
 
-## 📈 Impacto
+## Impacto
 - Mejora la salud física y emocional  
 - Reduce el estrés  
 - Aumenta la productividad  
