@@ -23,17 +23,17 @@ LunaSync busca brindar herramientas para el autoconocimiento y mejorar la calida
 ---
 
 ## Funcionalidades principales
-- 🌙 Seguimiento del ciclo menstrual  
-- 🤖 Asistente inteligente con IA  
-- 💬 Diario emocional con análisis automático  
-- 🥗 Plan de alimentación según la fase  
-- 🏋️ Rutinas de ejercicio personalizadas  
-- 📊 Panel de productividad  
-- 🔒 Protección de datos y privacidad  
+- Seguimiento del ciclo menstrual  
+- Asistente inteligente con IA  
+- Diario emocional con análisis automático  
+- Plan de alimentación según la fase  
+- Rutinas de ejercicio personalizadas  
+- Panel de productividad  
+- Protección de datos y privacidad  
 
 ---
 
-## 🛠️ Tecnologías
+## Tecnologías
 - Frontend: Flutter / React Native  
 - Backend: Node.js / Firebase  
 - Base de datos: MongoDB / Firebase  
