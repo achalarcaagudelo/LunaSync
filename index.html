@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LunaSync Pro - Dashboard</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+
+    <style>
+        :root {
+            --primary: #a855f7;
+            --secondary: #ec4899;
+            --bg: #fcfaff;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(168, 85, 247, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { background-color: var(--bg); display: flex; min-height: 100vh; color: #374151; }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--white);
+            padding: 30px 20px;
+            border-right: 1px solid #f0e6ff;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .nav-menu { list-style: none; }
+        .nav-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            color: #6b7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s ease;
+        }
+
+        .nav-item:hover { background: #f3f0ff; color: var(--primary); transform: translateX(5px); }
+        .nav-item.active {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            color: white;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+        }
+
+        /* Contenido Principal */
+        .main-content { flex: 1; margin-left: 260px; padding: 40px; }
+        
+        .section { display: none; animation: fadeIn 0.4s ease-out; }
+        .section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: var(--primary); font-size: 40px; margin-bottom: 8px; }
+
+        /* Tarjetas de Inicio */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f3f0ff;
+        }
+
+        .icon-box {
+            width: 55px; height: 55px; border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+        }
+
+        .pink { background: #fdf2f8; color: #ec4899; }
+        .purple { background: #f5f3ff; color: #a855f7; }
+        .blue { background: #eff6ff; color: #3b82f6; }
+        .red { background: #fef2f2; color: #ef4444; }
+
+        /* Estilos Secciones Específicas */
+        .glass-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f3f0ff;
+        }
+
+        textarea {
+            width: 100%; border: 1px solid #e5e7eb; padding: 20px;
+            border-radius: 15px; font-size: 16px; outline: none;
+            background: #fcfaff; margin-top: 15px; resize: none;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white; border: none; padding: 12px 30px;
+            border-radius: 12px; cursor: pointer; font-weight: 600;
+            margin-top: 15px; transition: 0.3s;
+        }
+
+        .btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+        #calendar { max-width: 900px; margin: 0 auto; height: 500px; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo"><i class="fas fa-moon"></i> LunaSync</div>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="showSection('inicio', this)"><i class="fas fa-home"></i> Inicio</li>
+            <li class="nav-item" onclick="showSection('ciclo', this)"><i class="fas fa-calendar-alt"></i> Ciclo</li>
+            <li class="nav-item" onclick="showSection('ia', this)"><i class="fas fa-wand-magic-sparkles"></i> Asistente IA</li>
+            <li class="nav-item" onclick="showSection('diario', this)"><i class="fas fa-book"></i> Diario</li>
+            <li class="nav-item" onclick="showSection('nutricion', this)"><i class="fas fa-apple-whole"></i> Nutrición</li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        
+        <section id="inicio" class="section active">
+            <div class="header">
+                <h1>¡Hola, Luna! 🪻</h1>
+                <p>Tu cuerpo y mente están en sintonía hoy.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="icon-box pink"><i class="fas fa-tint"></i></div>
+                    <div><span>Fase actual</span><strong>Ovulación</strong></div>
+                </div>
+                <div class="card">
+                    <div class="icon-box purple"><i class="fas fa-bolt"></i></div>
+                    <div><span>Energía</span><strong>Muy Alta ⚡</strong></div>
+                </div>
+            </div>
+            <div class="glass-panel">
+                <canvas id="mainChart" height="100"></canvas>
+            </div>
+        </section>
+
+        <section id="ciclo" class="section">
+            <div class="header"><h1>Calendario Lunar</h1></div>
+            <div class="glass-panel">
+                <div id="calendar"></div>
+            </div>
+        </section>
+
+        <section id="ia" class="section">
+            <div class="header"><h1>Asistente Luna IA</h1></div>
+            <div class="glass-panel">
+                <p>¿En qué puedo ayudarte hoy?</p>
+                <div id="chat-box" style="height: 200px; overflow-y: auto; background: #f9f7ff; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="color: var(--primary)"><strong>Luna IA:</strong> ¡Hola! Es un gran día para enfocarte en tus proyectos creativos.</p>
+                </div>
+                <input type="text" id="userMsg" placeholder="Pregúntame algo..." style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ddd;">
+                <button class="btn" onclick="sendMsg()">Enviar</button>
+            </div>
+        </section>
+
+        <section id="diario" class="section">
+            <div class="header"><h1>Mi Diario Personal</h1></div>
+            <div class="glass-panel">
+                <p>Escribe cómo te sientes hoy...</p>
+                <textarea id="diaryEntry" rows="8"></textarea>
+                <button class="btn" onclick="saveDiary()">Guardar Pensamientos</button>
+                <p id="saveStatus" style="color: #10b981; margin-top: 10px; display: none;">✅ Guardado en memoria local</p>
+            </div>
+        </section>
+
+        <section id="nutricion" class="section">
+            <div class="header"><h1>Guía de Nutrición</h1></div>
+            <div class="glass-panel">
+                <h3>Recomendado para Ovulación:</h3>
+                <ul style="list-style: none; margin-top: 20px;">
+                    <li style="margin-bottom: 10px;">🥑 Grasas saludables (Aguacate, Nueces)</li>
+                    <li style="margin-bottom: 10px;">🥦 Vegetales crucíferos</li>
+                    <li style="margin-bottom: 10px;">🍇 Frutos rojos antioxidantes</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
+
+    <script>
+        // MANEJO DE SECCIONES
+        function showSection(id, el) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+            if(id === 'ciclo') { setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 100); }
+        }
+
+        // DIARIO CON LOCALSTORAGE
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('luna_diary_data');
+            if (saved) document.getElementById('diaryEntry').value = saved;
+            initCalendar();
+            initChart();
+        });
+
+        function saveDiary() {
+            const val = document.getElementById('diaryEntry').value;
+            localStorage.setItem('luna_diary_data', val);
+            const status = document.getElementById('saveStatus');
+            status.style.display = 'block';
+            setTimeout(() => status.style.display = 'none', 2000);
+        }
+
+        // CALENDARIO
+        function initCalendar() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+                events: [
+                    { title: 'Periodo', start: '2026-04-10', end: '2026-04-15', color: '#ec4899' },
+                    { title: 'Fértil', start: '2026-04-22', end: '2026-04-26', color: '#a855f7' }
+                ]
+            });
+            calendar.render();
+        }
+
+        // GRÁFICA
+        function initChart() {
+            const ctx = document.getElementById('mainChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                    datasets: [{
+                        data: [6, 8, 7, 9, 8, 9, 10],
+                        borderColor: '#ec4899',
+                        tension: 0.4,
+                        fill: true,
+                        backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                        pointRadius: 0
+                    }]
+                },
+                options: { 
+                    plugins: { legend: { display: false } },
+                    scales: { y: { display: false }, x: { grid: { display: false } } }
+                }
+            });
+        }
+
+        // CHAT SIMULADO
+        function sendMsg() {
+            const input = document.getElementById('userMsg');
+            const box = document.getElementById('chat-box');
+            if(input.value.trim() === "") return;
+            
+            box.innerHTML += `<p style="text-align:right; margin-top:5px;"><strong>Tú:</strong> ${input.value}</p>`;
+            setTimeout(() => {
+                box.innerHTML += `<p style="color: var(--primary); margin-top:5px;"><strong>Luna IA:</strong> ¡Entendido! He registrado eso en tu perfil.</p>`;
+                box.scrollTop = box.scrollHeight;
+            }, 1000);
+            input.value = "";
+        }
+    </script>
+</body>
+</html>
